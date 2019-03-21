@@ -5,7 +5,7 @@ python: 3.6
 addons:
   apt:
     update: true
-    packges:
+    packages:
      - tree
 install:
   - pip install --upgrade --requirement requirements.txt

@@ -8,6 +8,8 @@ install:
   - for tool in $TOOLS; do pip install /tmp/$tool && mv /tmp/$tool/docs/source $tool && rm --force --recursive /tmp/$tool; done
 script:
   - make html && rm --force --recursive _build
+  - tree _build
+  - cat _build/html/compare50/dev.html
 deploy:
   provider: script
   script: 'git remote set-url origin "https://$USERNAME:$PASSWORD@github.com/cs50/manual50.git" && git branch --delete rel || true && git checkout -b rel && git add --all --force && git commit --allow-empty --message "$(date) [skip ci]" && git push --force origin rel'

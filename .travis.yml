@@ -2,6 +2,11 @@ language: python
 env:
   - TOOLS="check50 compare50"
 python: 3.6
+addons:
+  apt:
+    update: true
+    packges:
+     - tree
 install:
   - pip install --upgrade --requirement requirements.txt
   - for tool in $TOOLS; do rm --force --recursive /tmp/$tool && git clone --branch develop --depth 1 https://github.com/cs50/$tool.git /tmp/$tool; done
